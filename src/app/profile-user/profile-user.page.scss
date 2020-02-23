@@ -1,0 +1,113 @@
+.fontUserName {
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 18px;
+}
+
+.cssItem {
+    border-left: 1px solid #f08a5d;
+    padding: 8px;
+    font-family: 'Times New Roman', Times, serif;
+    color: #f0fff3;
+    text-align: center;
+    font-size: 15px;
+}
+
+.cssItemClick {
+    background-color: #ffffff;
+    padding: 8px;
+    font-family: 'Times New Roman', Times, serif;
+    color: #fa4659;
+    text-align: center;
+    border: 0.2px solid;
+}
+
+ion-avatar {
+    height: 80px;
+    width: 80px;
+}
+
+@import url('https://fonts.googleapis.com/css?family=Lato&display=swap');
+.fontSizeIcon {
+    font-size: 30px;
+}
+
+.fontSizeIconsm-down {
+    font-size: 19px;
+    color: #fa4646;
+    font-family: 'Times New Roman', Times, serif;
+}
+
+.NomTerrain {
+    color: rgb(100, 184, 32);
+}
+
+.sliderS {
+    border: 2px solid #eee;
+}
+
+.imagePost {
+    height: 200px;
+    width: 100%;
+    -webkit-box-shadow: 4px 6px 14px -2px rgba(143, 143, 143, 0.71);
+    -moz-box-shadow: 4px 6px 14px -2px rgba(143, 143, 143, 0.71);
+    box-shadow: 4px 6px 14px -2px rgba(143, 143, 143, 0.71);
+    border-radius: 5px;
+}
+
+.imgUser {
+    img,
+    ion-button {
+        border: 1px solid #ddd;
+        border-radius: 4px;
+        padding: 5px;
+        width: 100%;
+    }
+    img:hover,
+    ion-button:hover {
+        box-shadow: 0 0 2px 1px rgba(0, 140, 186, 0.5);
+    }
+}
+
+.barMenu {
+    background-color: #fa4659;
+    box-shadow: 4px 2px 6px 0px #90898d;
+}
+
+.btnAddTerrain {
+    font-size: 20px;
+    color: green;
+    font-family: monospace;
+}
+
+.Nom-Terrain {
+    font-family: unset;
+    color: #4b524c;
+    /* font-weight: bolder; */
+    font-size: 22px;
+    text-align: center;
+    text-transform: capitalize;
+}
+
+.bodrer-col-terrain {
+    ion-col {
+        border: 2px solid #eee;
+        box-shadow: 1px 1px 1px 1px #fafafa;
+        font-family: unset;
+        font-size: 19px;
+    }
+}
+
+.disabled {
+    background: rgba(255, 65, 109, 0.61);
+    /* fallback for old browsers */
+    background: -webkit-linear-gradient(to left, #FF4B2B, #FF416C);
+    /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to left, #FF4B2B, #FF416C);
+    /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    color: white;
+    opacity: .8;
+}
+
+.disabledDelete {
+    pointer-events: none;
+}

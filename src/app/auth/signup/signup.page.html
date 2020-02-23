@@ -1,0 +1,31 @@
+<ion-header>
+    <ion-toolbar>
+        <ion-title>
+            Se connecter
+        </ion-title>
+        <ion-buttons slot="start">
+            <ion-back-button defaultHref="login"></ion-back-button>
+        </ion-buttons>
+    </ion-toolbar>
+</ion-header>
+<ion-content class="ion-padding-top ion-margin-top">
+    <form class="ion-padding">
+        <ion-list>
+            <ion-item>
+                <ion-label position="floating">Nom d'utilisateur</ion-label>
+                <ion-input type="email" placeholder="Votre Email Adresse" [(ngModel)]="data.email" name="email" required></ion-input>
+            </ion-item>
+            <ion-item>
+                <ion-label position="floating">Mot de passe </ion-label>
+                <ion-input type="password" placeholder="Votre Mot De Passe" [(ngModel)]="data.password" name="password" required></ion-input>
+            </ion-item>
+
+        </ion-list>
+        <ion-button class="ion-margin" size="" expand="block" (click)="connexionClient()">Connexion</ion-button>
+        <div text-center><span (click)="creeCompte()"><strong>Créé un compte</strong></span>
+            <p style="text-align: justify center;">En vous inscrivant, vous acceptez nos <span color="primary"><u>Conditions générales</u></span>, notre Politique d’utilisation des données et notre Politique d’utilisation des cookies.
+            </p>
+        </div>
+        <h1>{{dataName}}</h1>
+    </form>
+</ion-content>

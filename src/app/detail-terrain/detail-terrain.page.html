@@ -1,0 +1,128 @@
+<ion-header>
+    <ion-toolbar>
+        <ion-title>{{terrain.nom}}</ion-title>
+    </ion-toolbar>
+    <ion-grid fixed>
+        <ion-row>
+            <ion-col size="12">
+                <ion-slides>
+                    <ion-slide *ngFor="let dateLigne of heuresReservation" class="ion-no-margin ion-no-padding">
+                        <ion-col *ngFor="let date of dateLigne" size="3">
+                            <span [id]="date.value" [class.enabled]="date.enable" [class.disabled]="!date.enable" (click)="selectedItemHeure(date.value)" class="fontFamilly">
+                                    {{date.value}}:00
+                            </span><br>
+                            <ion-icon [id]="'drop'+dateItem2" class="icondrop ion-hide fontFamilly" src="../assets/img/down-chevron.svg"></ion-icon>
+                        </ion-col>
+                    </ion-slide>
+                </ion-slides>
+            </ion-col>
+        </ion-row>
+    </ion-grid>
+</ion-header>
+
+<ion-content class="ion-no-margin ion-no-padding">
+    <ion-grid fixed class="ion-no-margin ion-no-padding">
+        <ion-row class="ion-no-margin ion-no-padding" (click)="basic()">
+            <ion-col size="2" class="ion-no-margin ion-no-padding">
+                <ion-icon name="calendar" class="fontSizeIcon ion-margin"></ion-icon>
+            </ion-col>
+            <ion-col size="10" class="ion-no-margin padding-top-col">
+                <ion-label *ngIf="dateToday" class="disponible-color">
+                    <i *ngIf="dataLoading">Date Réservation : {{dateToday}}</i>
+                    <i *ngIf="!dataLoading"><ion-skeleton-text width="100%" animated></ion-skeleton-text></i>
+                </ion-label>
+                <ion-label *ngIf="!dateToday">
+                    <i>selectionné la date et heure </i>
+                </ion-label>
+            </ion-col>
+        </ion-row>
+    </ion-grid>
+    <ion-card *ngIf="!dataLoading">
+        <ion-card-content class="ion-no-margin ion-no-padding">
+            <ion-skeleton-text width="100%" animated></ion-skeleton-text>
+            <ion-grid fixed class=" ion-no-margin ion-no-padding ">
+                <ion-row>
+                    <ion-col size="12 " class="ion-text-center ">
+                        <h1>
+                            <ion-skeleton-text width="100%" animated></ion-skeleton-text>
+                        </h1>
+                    </ion-col>
+                </ion-row>
+                <ion-row style="font-size: 16px;font-weight: bold; " class="ion-no-margin ion-no-padding ">
+                    <ion-col size="4 ">
+                        <ion-label>
+                            <ion-skeleton-text width="100%" animated></ion-skeleton-text>
+                        </ion-label>
+                    </ion-col>
+                    <ion-col size="4 ">
+                        <span><ion-skeleton-text width="100%" animated></ion-skeleton-text></span>
+                    </ion-col>
+                    <ion-col size="4 ">
+                        <span><ion-skeleton-text width="100%" animated></ion-skeleton-text></span>
+                    </ion-col>
+                </ion-row>
+                <ion-row style="font-size: 16px;font-weight: bold; " class="ion-no-margin ion-no-padding ">
+                    <ion-col size="4 ">
+                        <ion-skeleton-text width="100%" animated></ion-skeleton-text><br>
+                        <ion-skeleton-text width="100%" animated></ion-skeleton-text>
+                    </ion-col>
+                    <ion-col size="4 " style="padding-top: 14px; ">
+                        <ion-skeleton-text width="100%" animated></ion-skeleton-text>
+                    </ion-col>
+                    <ion-col size="4 ">
+                        <ion-skeleton-text width="100%" animated></ion-skeleton-text><br>
+                        <ion-skeleton-text width="100%" animated></ion-skeleton-text>
+                    </ion-col>
+                </ion-row>
+                <ion-row style="font-size: 16px;font-weight: bold; " class="ion-no-margin ion-no-padding ">
+                    <ion-col size="8" offset="4">
+                        <ion-skeleton-text width="100%" animated></ion-skeleton-text>
+                    </ion-col>
+                </ion-row>
+            </ion-grid>
+        </ion-card-content>
+    </ion-card>
+    <ion-card *ngIf="dataLoading">
+        <ion-card-content class="ion-no-margin ion-no-padding">
+            <ion-img class="ion-no-margin ion-no-padding" style="width: 100%;" [src]="urlImage + terrain.url" (click)="openPreview(urlImage+terrain.url)"></ion-img>
+            <ion-grid fixed class=" ion-no-margin ion-no-padding ">
+                <ion-row>
+                    <ion-col size="12 " class="ion-text-center ">
+                        <h1>{{terrain.nom}}</h1>
+                    </ion-col>
+                </ion-row>
+                <ion-row style="font-size: 16px;font-weight: bold; " class="ion-no-margin ion-no-padding ">
+                    <ion-col size="4 ">
+                        <ion-label>Prix</ion-label>
+                    </ion-col>
+                    <ion-col size="4 ">
+                        <span>Taille</span>
+                    </ion-col>
+                    <ion-col size="4 ">
+                        <span>Heure Début</span>
+                    </ion-col>
+                </ion-row>
+                <ion-row style="font-size: 16px;font-weight: bold; " class="ion-no-margin ion-no-padding ">
+                    <ion-col size="4 ">
+                        <ion-icon src="../../assets/img/sun.svg "></ion-icon>&nbsp; <span>{{terrain.prix_matain}}DH</span><br>
+                        <ion-icon src="../../assets/img/moon.svg "></ion-icon>&nbsp; <span>{{terrain.prix_soir}}DH</span>
+                    </ion-col>
+                    <ion-col size="4 " style="padding-top: 14px; ">
+                        <ion-icon name="person "></ion-icon>&nbsp; <span>{{terrain.categorie}}</span>
+                    </ion-col>
+                    <ion-col size="4 ">
+                        <ion-icon src="../../assets/img/sun.svg "></ion-icon>&nbsp; <span>{{terrain.heure_debut_matin | slice:0:5 }}</span><br>
+                        <ion-icon src="../../assets/img/moon.svg "></ion-icon>&nbsp; <span>{{terrain.heure_debut_soir | slice:0:5 }}</span>
+                    </ion-col>
+                </ion-row>
+                <ion-row style="font-size: 16px;font-weight: bold; " class="ion-no-margin ion-no-padding ">
+                    <ion-col size="12" class="ion-text-center">
+                        {{terrain.type}}
+                    </ion-col>
+                </ion-row>
+            </ion-grid>
+        </ion-card-content>
+    </ion-card>
+    <ion-button [disabled]='dataNotValid' style="width: 90%;margin-left: 5%;margin-right: 5%; " size="small " color="success " (click)="addReservation()">
+        Reserver ce Terrain</ion-button>
+</ion-content>

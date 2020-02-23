@@ -1,0 +1,93 @@
+<ion-header>
+    <ion-toolbar>
+        <ion-title>
+            Créer un compte
+        </ion-title>
+    </ion-toolbar>
+</ion-header>
+<ion-content>
+    <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)">
+        <ion-refresher-content>
+        </ion-refresher-content>
+    </ion-refresher>
+    <form>
+        <ion-list>
+            <ion-grid fixed>
+                <ion-row style="width:100px;height:100px;margin: 0 auto !important;">
+                    <ion-col>
+                        <ion-avatar>
+                            <ion-img *ngIf="!data.url" style="width:100px;height:100px;" src="../assets/img/avatar.jpeg"></ion-img>
+                            <ion-img *ngIf="data.url" style="width:100px;height:100px;" [src]="data.url"></ion-img>
+                        </ion-avatar>
+                    </ion-col>
+                </ion-row>
+                <ion-row>
+                    <ion-col size="12">
+                        <ion-item>
+                            <ion-button size="small" color="danger" style="width: 100%;" (click)="presentActionSheet()">
+                                choisir une photo de profile&nbsp;
+                                <ion-icon name="cloud-upload"></ion-icon>
+                            </ion-button>
+                        </ion-item>
+                        <ion-item class="club">
+                            <ion-label position="floating">Nom Club</ion-label>
+                            <ion-input type="text" required [(ngModel)]="data.brand_name" name="brand_name"></ion-input>
+                        </ion-item>
+                        <ion-item class="client">
+                            <ion-label position="floating">Nom d'utilisateur</ion-label>
+                            <ion-input type="text" required [(ngModel)]="data.nom" name="nom"></ion-input>
+                        </ion-item>
+                        <ion-item class="client">
+                            <ion-label position="floating">Prénom</ion-label>
+                            <ion-input type="text" required [(ngModel)]="data.prenom" name="prenom"></ion-input>
+                        </ion-item>
+                        <ion-item>
+                            <ion-label position="floating">Adresse e-mail</ion-label>
+                            <ion-input type="email" required [(ngModel)]="data.email" name="email"></ion-input>
+                        </ion-item>
+                        <ion-item>
+                            <ion-label position="floating">Mot de passe </ion-label>
+                            <ion-input type="password" required [(ngModel)]="data.password" name="password"></ion-input>
+                        </ion-item>
+                        <ion-item>
+                            <ion-label position="floating">Confirmez le mot de passe </ion-label>
+                            <ion-input type="password" required></ion-input>
+                        </ion-item>
+                        <ion-item>
+                            <ion-label position="floating">Numéro de Téléphone</ion-label>
+                            <ion-input type="tel" required [(ngModel)]="data.tel" name="tel"></ion-input>
+                        </ion-item>
+                        <ion-item>
+                            <ion-label position="floating">Adresse</ion-label>
+                            <ion-input type="text" required [(ngModel)]="data.adresse" name="adresse"></ion-input>
+                        </ion-item>
+                        <ion-item class="client">
+                            <ion-label>MM DD YY</ion-label>
+                            <ion-datetime displayFormat="YYYY-MM-DD" min="2019-08-29" max="2030-08-29" placeholder="Date Naissance" [(ngModel)]="data.dateNaissance" name="dateNaissance"></ion-datetime>
+                        </ion-item>
+                        <ion-item>
+                            <ion-label>ville</ion-label>
+                            <ion-select [(ngModel)]="data.ville" name="ville" placeholder="Select City">
+                                <ion-select-option value="Marrakech">Marrakech</ion-select-option>
+                                <ion-select-option value="Fes">Fes</ion-select-option>
+                                <ion-select-option value="Makness">Rabat</ion-select-option>
+                                <ion-select-option value="Casablanca">Casablanca</ion-select-option>
+                                <ion-select-option value="Tanger">Tanger</ion-select-option>
+                                <ion-select-option value="Autre">Autre</ion-select-option>
+                            </ion-select>
+                        </ion-item>
+                        <ion-item>
+
+                            <!-- <ion-input [(ngModel)]="data.laltitude" name="laltitude" type="number" required placeholder="laltitude"></ion-input>
+                            <ion-input [(ngModel)]="data.longitude" name="longitude" type="number" required placeholder="longitude"></ion-input> -->
+                            <div class="club" id="googleMap" style="width:100%;height:300px;padding-bottom: 40px;">
+                            </div>
+                        </ion-item>
+                    </ion-col>
+                </ion-row>
+            </ion-grid>
+        </ion-list>
+        <ion-button class="ion-margin" [disabled]="false" expand="block" (click)="inscrireClient()">S'inscrire</ion-button>
+        <div text-center>déja inscrire ? <span (click)="seConnecter()"><strong>Se connecter</strong></span></div>
+    </form>
+</ion-content>

@@ -1,0 +1,141 @@
+<ion-header>
+    <ion-toolbar>
+        <ion-title>Reservation du Terrain</ion-title>
+        <ion-buttons slot="start">
+            <ion-back-button defaultHref="tabs/profile-user"></ion-back-button>
+        </ion-buttons>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content>
+    <ng-container *ngIf="dataloading">
+        <ng-container *ngIf="data.length==0">
+            <img style="margin-top: 165px;" src="../../assets/img/no_data_found.png" />
+        </ng-container>
+        <ion-card *ngFor="let element of data">
+            <ion-item>
+                <ion-grid fixed class="ion-no-padding ion-no-margin">
+                    <ion-row class="ion-no-padding ion-no-margin">
+                        <ion-col size="2" class="ion-no-padding ion-no-margin">
+                            <ion-avatar>
+                                <img [src]="imageUrl + element.url" />
+                            </ion-avatar>
+                        </ion-col>
+                        <ion-col size="10" class="ion-no-padding ion-no-margin">
+                            <ion-label style="font-family: monospace;">{{element.nom +' '+ element.prenom | uppercase}}</ion-label>
+                            <ion-label style="font-family: monospace;">{{element.email | uppercase}}</ion-label>
+                        </ion-col>
+                    </ion-row>
+                </ion-grid>
+            </ion-item>
+            <ion-card-content>
+                <ion-grid fixed class="ion-no-padding ion-no-margin">
+                    <ion-row class="ion-no-padding ion-no-margin">
+                        <ion-col size="1" class="ion-no-padding ion-no-margin">
+                            <ion-icon name="call"></ion-icon>
+                        </ion-col>
+                        <ion-col size="11" class="ion-no-padding ion-no-margin">
+                            <ion-label style="font-family: monospace;">{{element.tel | uppercase}}</ion-label>
+                        </ion-col>
+                    </ion-row>
+                    <ion-row class="ion-no-padding ion-no-margin">
+                        <ion-col size="1" class="ion-no-padding ion-no-margin">
+                            <ion-icon name="pin"></ion-icon>
+                        </ion-col>
+                        <ion-col size="11" class="ion-no-padding ion-no-margin">
+                            <ion-label style="font-family: monospace;">{{element.adresse | uppercase}}</ion-label>
+                        </ion-col>
+                    </ion-row>
+                    <ion-row class="ion-no-padding ion-no-margin">
+                        <ion-col size="1" class="ion-no-padding ion-no-margin">
+                            <ion-icon name="calendar"></ion-icon>
+                        </ion-col>
+                        <ion-col size="11" class="ion-no-padding ion-no-margin">
+                            <ion-label style="font-family: monospace;">{{element.date_reservation | uppercase}}</ion-label>
+                            <ion-label style="font-family: monospace;" color="danger" *ngIf="dateBetweenTwoDate(element.date_reservation) != 0">&nbsp;- reste:({{dateBetweenTwoDate(element.date_reservation)}} Jour(s)) </ion-label>
+                            <ion-label style="font-family: monospace;" color="danger" *ngIf="dateBetweenTwoDate(element.date_reservation) == 0">&nbsp;(Aujourd'hui)</ion-label>
+                        </ion-col>
+                    </ion-row>
+                    <ion-row class="ion-no-padding ion-no-margin">
+                        <ion-col size="1" class="ion-no-padding ion-no-margin">
+                            <ion-icon name="timer"></ion-icon>
+                        </ion-col>
+                        <ion-col size="11" class="ion-no-padding ion-no-margin">
+                            <ion-label style="font-family: monospace;">{{element.heure_reservation | uppercase}}</ion-label>
+                        </ion-col>
+                    </ion-row>
+                </ion-grid>
+            </ion-card-content>
+        </ion-card>
+    </ng-container>
+    <ng-container *ngIf="!dataloading">
+        <ion-card *ngFor="let element of [1,2]">
+            <ion-item>
+                <ion-grid fixed class="ion-no-padding ion-no-margin">
+                    <ion-row class="ion-no-padding ion-no-margin">
+                        <ion-col size="2" class="ion-no-padding ion-no-margin">
+                            <ion-avatar>
+                                <ion-skeleton-text width="100%" animated></ion-skeleton-text>
+                            </ion-avatar>
+                        </ion-col>
+                        <ion-col size="10" class="ion-no-padding ion-no-margin">
+                            <ion-label style="font-family: monospace;">
+                                <ion-skeleton-text width="100%" animated></ion-skeleton-text>
+                            </ion-label>
+                            <ion-label style="font-family: monospace;">
+                                <ion-skeleton-text width="100%" animated></ion-skeleton-text>
+                            </ion-label>
+                        </ion-col>
+                    </ion-row>
+                </ion-grid>
+            </ion-item>
+            <ion-card-content>
+                <ion-grid fixed class="ion-no-padding ion-no-margin">
+                    <ion-row class="ion-no-padding ion-no-margin">
+                        <ion-col size="1" class="ion-no-padding ion-no-margin">
+                            <ion-skeleton-text width="100%" animated></ion-skeleton-text>
+                        </ion-col>
+                        <ion-col size="11" class="ion-no-padding ion-no-margin">
+                            <ion-label style="font-family: monospace;">
+                                <ion-skeleton-text width="100%" animated></ion-skeleton-text>
+                            </ion-label>
+                        </ion-col>
+                    </ion-row>
+                    <ion-row class="ion-no-padding ion-no-margin">
+                        <ion-col size="1" class="ion-no-padding ion-no-margin">
+                            <ion-skeleton-text width="100%" animated></ion-skeleton-text>
+                        </ion-col>
+                        <ion-col size="11" class="ion-no-padding ion-no-margin">
+                            <ion-label style="font-family: monospace;">
+                                <ion-skeleton-text width="100%" animated></ion-skeleton-text>
+                            </ion-label>
+                        </ion-col>
+                    </ion-row>
+                    <ion-row class="ion-no-padding ion-no-margin">
+                        <ion-col size="1" class="ion-no-padding ion-no-margin">
+                            <ion-skeleton-text width="100%" animated></ion-skeleton-text>
+                        </ion-col>
+                        <ion-col size="11" class="ion-no-padding ion-no-margin">
+                            <ion-label style="font-family: monospace;">
+                                <ion-skeleton-text width="100%" animated></ion-skeleton-text>
+                            </ion-label>
+                            <ion-label style="font-family: monospace;">
+                                <ion-skeleton-text width="100%" animated></ion-skeleton-text>
+                            </ion-label>
+                        </ion-col>
+                    </ion-row>
+                    <ion-row class="ion-no-padding ion-no-margin">
+                        <ion-col size="1" class="ion-no-padding ion-no-margin">
+                            <ion-skeleton-text width="100%" animated></ion-skeleton-text>
+                        </ion-col>
+                        <ion-col size="11" class="ion-no-padding ion-no-margin">
+                            <ion-label style="font-family: monospace;">
+                                <ion-skeleton-text width="100%" animated></ion-skeleton-text>
+                            </ion-label>
+                        </ion-col>
+                    </ion-row>
+                </ion-grid>
+            </ion-card-content>
+        </ion-card>
+    </ng-container>
+</ion-content>

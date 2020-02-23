@@ -1,0 +1,49 @@
+<ion-header>
+    <ion-toolbar>
+        <ion-title>
+            Créer une Annonce
+        </ion-title>
+        <ion-buttons slot="start">
+            <ion-back-button defaultHref="tabs/profile-user"></ion-back-button>
+        </ion-buttons>
+    </ion-toolbar>
+</ion-header>
+<ion-content>
+    <ion-refresher slot="fixed">
+        <ion-refresher-content>
+        </ion-refresher-content>
+    </ion-refresher>
+    <form>
+        <ion-list>
+            <ion-grid fixed>
+                <ion-row style="width:100px;height:100px;margin: 0 auto !important;">
+                    <ion-col>
+                        <ion-avatar>
+                            <ion-img *ngIf="!data.image" style="width:100px;height:100px;" src="../assets/img/avatar.jpeg"></ion-img>
+                            <ion-img *ngIf="data.image" style="width:100px;height:100px;" [src]="data.image"></ion-img>
+                        </ion-avatar>
+                    </ion-col>
+                </ion-row>
+                <ion-row>
+                    <ion-col size="12">
+                        <ion-item>
+                            <ion-button size="small" color="danger" style="width: 100%;" (click)="presentActionSheet()">
+                                choisir une photo &nbsp;
+                                <ion-icon name="cloud-upload"></ion-icon>
+                            </ion-button>
+                        </ion-item>
+                        <ion-item>
+                            <ion-label position="floating">titre</ion-label>
+                            <ion-input type="text" required [(ngModel)]="data.titre" name="titre"></ion-input>
+                        </ion-item>
+                        <ion-item>
+                            <ion-label position="floating">Publication</ion-label>
+                            <ion-textarea required [(ngModel)]="data.pub" name="pub"></ion-textarea>
+                        </ion-item>
+                    </ion-col>
+                </ion-row>
+            </ion-grid>
+        </ion-list>
+        <ion-button color="primary" class="ion-margin" [disabled]="false" expand="block" size="small" fill="outline" (click)="addAnnonce()">publier</ion-button>
+    </form>
+</ion-content>

@@ -1,0 +1,43 @@
+<ion-header>
+    <ion-toolbar class="ion-no-padding">
+        <ion-searchbar id="searchId" placeholder="Rechercher par Nom Club ..">
+        </ion-searchbar>
+        <ion-icon name="options" slot="end" class="fontSizeIcon ion-margin"></ion-icon>
+    </ion-toolbar>
+</ion-header>
+<ion-content>
+    <!-- <ion-searchbar id="searchId" placeholder="Rechercher par Nom Club ..">
+    </ion-searchbar> -->
+    <ion-card *ngFor="let item of clubs">
+        <ion-card-content class="ion-no-margin ion-no-padding">
+            <ion-img (click)="seeTerrain(item.id)" style="width: 100%;" [src]="urlImage + item.url"></ion-img>
+            <ion-grid fixed>
+                <ion-row>
+                    <ion-col size="12">
+                        <p class="NomTerrain">{{item.brand_name}}</p>
+                        <p class="AdresseTerrain">{{item.adresse}}</p>
+                    </ion-col>
+                    <!-- <ion-col size="4">
+                        <span class="Heure fontFamilly ion-hide-sm-up">
+                               <ion-icon name="timer" class="iconHeure"></ion-icon> <strong class="fontSizeIconsm-down">{{item.tel}}</strong>
+                            </span>
+                        <span class="Heure fontFamilly ion-hide-sm-down">
+                                <ion-icon name="timer" class="iconHeure"></ion-icon>
+                                <strong class="fontSizeIcon">{{item.tel}}</strong>
+                             </span>
+                    </ion-col> -->
+                </ion-row>
+                <ion-row style="font-size: 16px;font-weight: bold;text-align: center;box-shadow: 8px 2px 3px 4px #EFEFEF;">
+                    <ion-col size="12" (click)="positionClubNavigate(item.id)">
+                        <ion-icon src="../assets/img/placeholder.svg"></ion-icon>&nbsp; <span>Afficher Localisation</span>
+                    </ion-col>
+                </ion-row>
+                <ion-row>
+                    <ion-col size="12">
+                        <button class="btnCall"><ion-icon name="call"></ion-icon> {{item.tel}}</button>
+                    </ion-col>
+                </ion-row>
+            </ion-grid>
+        </ion-card-content>
+    </ion-card>
+</ion-content>

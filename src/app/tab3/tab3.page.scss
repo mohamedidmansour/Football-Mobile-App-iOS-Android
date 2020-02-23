@@ -1,0 +1,67 @@
+@import url('https://fonts.googleapis.com/css?family=Courgette|Lobster&display=swap');
+ion-title {
+    //font-family: 'Lobster', cursive;
+    font-family: 'Courgette', cursive;
+}
+
+@import url('https://fonts.googleapis.com/css?family=Lato&display=swap');
+.fontSizeIcon {
+    font-size: 30px;
+}
+
+.fontSizeIconsm-down {
+    font-size: 20px;
+}
+
+.calendareItem {
+    width: 40px;
+    height: 30px;
+    background-color: #e84545;
+    color: white;
+    border-radius: 40%;
+    padding: 10px;
+    font-size: 20px;
+    //font-style: italic;
+}
+
+.icondrop {
+    color: #e84545;
+}
+
+
+/*Calender*/
+
+
+/*fin style calender*/
+
+.colorBGGradient {
+    background: #FF416C;
+    /* fallback for old browsers */
+    background: -webkit-linear-gradient(to bottom, #FF4B2B, #FF416C);
+    /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to bottom, #FF4B2B, #FF416C);
+    /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+}
+
+.fontFamilly {
+    font-family: 'Lato', sans-serif;
+}
+
+.iconHeure {
+    font-size: 14px;
+}
+
+.btnCall {
+    box-shadow: 1px 1px 1px 1px #321e1e38;
+    background-color: aliceblue;
+    height: 30px;
+    width: 100%;
+    color: forestgreen;
+    font-size: 16px;
+    font-weight: bolder;
+}
+
+.btnCall:hover {
+    box-shadow: none;
+    border: 0.5pt solid rgba(49, 35, 126, 0.096);
+}

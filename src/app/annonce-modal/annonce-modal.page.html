@@ -1,0 +1,19 @@
+<ion-header>
+    <ion-toolbar>
+        <ion-title>Publication</ion-title>
+        <ion-label slot="end" color="primary" (click)="close()">Fermer</ion-label>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content>
+    <ion-card>
+        <img height="200" style="box-shadow: 1px 1px 10px #eee" src="{{url + objAnnonce.image}}" />
+        <ion-card-header>
+            <ion-card-subtitle>{{objAnnonce.date_creation}}</ion-card-subtitle>
+            <ion-card-title>{{objAnnonce.titre}}</ion-card-title>
+        </ion-card-header>
+        <ion-card-content>
+            {{objAnnonce.pub}}
+        </ion-card-content>
+    </ion-card>
+</ion-content>

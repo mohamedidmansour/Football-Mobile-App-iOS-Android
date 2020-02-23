@@ -1,0 +1,20 @@
+<ion-header>
+    <ion-toolbar class="ion-no-padding">
+        <ion-title>Mes Notifications</ion-title>
+    </ion-toolbar>
+</ion-header>
+<ion-content>
+    <ng-container *ngIf="mesNotifications.length==0">
+        <img style="margin-top: 165px;" src="../../assets/img/no_data_found.png" />
+    </ng-container>
+    <ion-card *ngFor="let item of mesNotifications">
+        <ion-item>
+            <ion-label class="ion-no-margin">{{item.titre}}</ion-label><br>
+            <ion-label class="ion-no-margin">{{item.date_creation}}</ion-label>
+            <ion-icon name="more" color="danger" fill="outline" slot="end" (click)="presentActionSheet3()"></ion-icon>
+        </ion-item>
+        <ion-card-content (click)="openPreviewDetailPublication(item)">
+            {{item.pub | slice:0:100}}...
+        </ion-card-content>
+    </ion-card>
+</ion-content>

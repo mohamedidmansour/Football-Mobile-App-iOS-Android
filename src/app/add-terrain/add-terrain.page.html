@@ -1,0 +1,152 @@
+<ion-header>
+    <ion-toolbar>
+        <ion-title>Terrain</ion-title>
+        <ion-buttons slot="start">
+            <ion-back-button defaultHref="tabs/profile-user" (click)="close()"></ion-back-button>
+        </ion-buttons>
+        <ion-label slot="end" (click)="saveAndClose()" color="primary"><strong>S'auvgarder</strong></ion-label>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content>
+    <ion-grid fixed>
+        <ion-row class="ion-no-padding" class="imgUser">
+            <ion-col class="ion-no-padding" size="12">
+                <ion-button size="small" color="light" style="width: 100%;height: 80px;" (click)="presentActionSheet2()">
+                    Prendre Une Photo Terrain <br>
+                    <span style="font-size: 20px;"><ion-icon name="camera"></ion-icon></span>
+                </ion-button>
+            </ion-col>
+        </ion-row>
+        <ion-row>
+            <ion-col size="12">
+                <form action="">
+                    <ion-item>
+                        <ion-label position="floating">Nom Terrain</ion-label>
+                        <ion-input type="text" [(ngModel)]="terrain.nom" name="nom" placeholder="Nom de Terrain"></ion-input>
+                    </ion-item>
+                    <ion-item>
+                        <ion-label position="floating">Longeur Terrain</ion-label>
+                        <ion-input type="number" [(ngModel)]="terrain.longeur" name="longeur" placeholder="Longeur De Terrain"></ion-input>
+                    </ion-item>
+                    <ion-item>
+                        <ion-label position="floating">Largeur Terrain</ion-label>
+                        <ion-input type="number" [(ngModel)]="terrain.largeur" name="largeur" placeholder="Largeur De Terrain"></ion-input>
+                    </ion-item>
+                    <ion-item>
+                        <ion-label>Choisir Catégorie</ion-label>
+                        <ion-select placeholder="Catégorie" [(ngModel)]="terrain.categorie_id" name="categorie_id">
+                            <ion-select-option *ngFor="let categorie of categories" value="{{categorie.id}}">{{categorie.libelle}}</ion-select-option>
+                        </ion-select>
+                    </ion-item>
+                    <ion-item>
+                        <ion-label>Choisir Type de Terrain</ion-label>
+                        <ion-select placeholder="Type de Terrain" [(ngModel)]="terrain.type_id" name="type_id">
+                            <ion-select-option *ngFor="let type of types" value="{{type.id}}">{{type.libelle}}</ion-select-option>
+                        </ion-select>
+                    </ion-item>
+                    <ion-item>
+                        <ion-label>Choisir Un Pack</ion-label>
+                        <ion-select placeholder="le pack" [(ngModel)]="terrain.pack_id" name="pack_id">
+                            <ion-select-option value="{{pac.id}}" *ngFor="let pac of packes">Numero : {{pac.id}}</ion-select-option>
+                        </ion-select>
+                    </ion-item>
+                    <ion-item>
+                        <ion-grid fixed>
+                            <!-- <ion-row>
+                                <ion-col size="12" class="ion-text-center">
+                                   
+                                </ion-col>
+                            </ion-row> -->
+                            <ion-row>
+                                <ion-col size="12">
+                                    <ion-slides scrollbar="ios" *ngIf="packes">
+                                        <ion-slide *ngFor="let pac of packes">
+                                            <ion-grid fixed class="border-col">
+                                                <ion-row>
+                                                    <ion-col size="12">
+                                                        <ion-label>Détail du Pack : {{pac.id}}</ion-label>
+                                                    </ion-col>
+                                                </ion-row>
+                                                <ion-row>
+                                                    <ion-col size="8">
+                                                        <ion-icon name="cash"></ion-icon>&nbsp;Prix Matin</ion-col>
+                                                    <ion-col size="4" class="ion-text-center">{{pac.prix_matain}}DH</ion-col>
+                                                </ion-row>
+                                                <ion-row>
+                                                    <ion-col size="8">
+                                                        <ion-icon name="cash"></ion-icon>&nbsp;Prix Soire</ion-col>
+                                                    <ion-col size="4" class="ion-text-center">
+                                                        {{pac.prix_soir}}DH
+                                                    </ion-col>
+                                                </ion-row>
+                                                <ion-row>
+                                                    <ion-col size="8">
+                                                        <ion-icon name="timer"></ion-icon>&nbsp;Heure Début Matin</ion-col>
+                                                    <ion-col size="4" class="ion-text-center">{{pac.heure_debut_matin}}</ion-col>
+                                                </ion-row>
+                                                <ion-row>
+                                                    <ion-col size="8">
+                                                        <ion-icon name="timer"></ion-icon>&nbsp;Heure Début Soire</ion-col>
+                                                    <ion-col size="4" class="ion-text-center">{{pac.heure_debut_soir}}</ion-col>
+                                                </ion-row>
+
+                                            </ion-grid>
+                                        </ion-slide>
+                                    </ion-slides>
+                                </ion-col>
+                            </ion-row>
+                            <ion-row>
+                                <ion-col size="12">
+                                    <div class="card">
+                                        <div class="card-header">
+                                            <button id="btnShowHide" class="btn-sm btn-block btn-primary" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                                                    * &nbsp;Créee Un Nouveau Pack
+                                                  </button>
+                                        </div>
+                                        <div id="collapseOne" class="collapse hide">
+                                            <div>
+                                                <ion-item>
+                                                    <ion-label position="floating">Prix Matin *</ion-label>
+                                                    <ion-input type="number" [(ngModel)]="packe.prix_matain" name="prix_matain" palceholder="Prix Matin"></ion-input>
+                                                </ion-item>
+                                                <ion-item>
+                                                    <ion-label position="floating">Prix Soire *</ion-label>
+                                                    <ion-input type="number" [(ngModel)]="packe.prix_soir" name="prix_soir"></ion-input>
+                                                </ion-item>
+                                                <ion-item>
+                                                    <ion-datetime displayFormat="HH:00" placeholder="Début Matin" [(ngModel)]="packe.heure_debut_matin" name="heure_debut_matin"></ion-datetime>
+                                                </ion-item>
+                                                <ion-item>
+                                                    <ion-datetime displayFormat="HH:00" placeholder="Début Soire" [(ngModel)]="packe.heure_debut_soir" name="heure_debut_soir"></ion-datetime>
+                                                </ion-item>
+                                                <ion-item>
+                                                    <ion-button style="width: 100%;" (click)="addPackes()">
+                                                        Enregister Ce Packe
+                                                    </ion-button>
+                                                </ion-item>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </ion-col>
+                            </ion-row>
+                        </ion-grid>
+                    </ion-item>
+                </form>
+            </ion-col>
+        </ion-row>
+    </ion-grid>
+</ion-content>
+
+<!-- <div class="card">
+    <div class="card-header">
+        <button class="btn-sm btn-block" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+        +&nbsp;Nouveau Pack
+      </button>
+    </div>
+    <div id="collapseOne" class="collapse show">
+        <div class="card-body">
+
+        </div>
+    </div>
+</div> -->

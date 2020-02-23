@@ -1,0 +1,168 @@
+    @import url('https://fonts.googleapis.com/css?family=Courgette|Lobster&display=swap');
+    @import url('https://fonts.googleapis.com/css?family=Karla&display=swap');
+    @import url('https://fonts.googleapis.com/css?family=Livvic&display=swap');
+    @import url('https://fonts.googleapis.com/css?family=Manjari&display=swap');
+    @import url('https://fonts.googleapis.com/css?family=Ubuntu&display=swap');
+    ion-title {
+        //font-family: 'Lobster', cursive;
+        font-family: 'Courgette', cursive;
+    }
+    
+    .fontSizeIcon {
+        font-size: 20px;
+    }
+    
+    .borderStyle {
+        border: 1px solid;
+        border-color: #E94057;
+    }
+    
+    .card-content-md h2 {
+        text-align: center;
+    }
+    
+    .nameBrand {
+        font-family: 'Karla', sans-serif;
+        font-weight: bold;
+        text-align: center;
+        text-transform: uppercase;
+    }
+    
+    .imagePost {
+        height: 200px;
+        width: 100%;
+        -webkit-box-shadow: 4px 6px 14px -2px rgba(143, 143, 143, 0.71);
+        -moz-box-shadow: 4px 6px 14px -2px rgba(143, 143, 143, 0.71);
+        box-shadow: 4px 6px 14px -2px rgba(143, 143, 143, 0.71);
+        border-radius: 5px;
+    }
+    
+    .backgroundJoueurNouveau {
+        // https://image.freepik.com/free-vector/gradient-geometric-shape-background_78532-312.jpg
+        background-image: url('../../assets/img/bg_userAll.png');
+        background-color: #cccccc;
+        /* Used if the image is unavailable */
+        /* You must set a specified height */
+        background-position: center;
+        /* Center the image */
+        background-repeat: no-repeat;
+        /* Do not repeat the image */
+        background-size: cover;
+        opacity: .9;
+        /* Resize the background image to cover the entire container */
+    }
+    
+    .imgUsers {
+        height: 100px;
+        width: 100%;
+        -webkit-box-shadow: 4px 6px 14px -2px rgba(143, 143, 143, 0.71);
+        -moz-box-shadow: 4px 6px 14px -2px rgba(143, 143, 143, 0.71);
+        box-shadow: 4px 6px 14px -2px rgba(143, 143, 143, 0.71);
+        border-radius: 5px;
+    }
+    
+    .timePost {
+        font-family: 'Livvic', sans-serif;
+    }
+    
+    .nameBrandButtom {
+        font-family: 'Ubuntu', sans-serif;
+        //font-size: 10px;
+        font-weight: bolder;
+        color: rgba(202, 17, 17, 0.651);
+        text-align: center;
+    }
+    
+    .nameBrandParent {
+        padding-left: 20px;
+    }
+    
+    .descriptionPub {
+        text-align: justify;
+        padding-left: 3% 0 3% 0;
+        // height: 160px;
+    }
+    
+    .colorBg {
+        background-color: #E94057;
+    }
+    /* Extra small devices (phones, 600px and down) */
+    
+    ion-slide.ios.swiper-slide.swiper-zoom-container.hydrated.swiper-slide-active {
+        text-align: left;
+    }
+    
+    .txtNouveauJoueur {
+        font-family: initial;
+        padding-left: 13px;
+        color: cadetblue;
+        text-shadow: 1px 1px 6px orchid;
+    }
+    
+    // 
+    .fadeInRight {
+        position: relative;
+        -webkit-animation-name: example;
+        /* Safari 4.0 - 8.0 */
+        -webkit-animation-duration: 1s;
+        /* Safari 4.0 - 8.0 */
+        animation-name: example;
+        animation-duration: 0.5s;
+    }
+    
+    ion-rating {
+        --color: gray;
+        --color-filled: green;
+    }
+    /* Standard syntax */
+    
+    @keyframes example {
+        0% {
+            left: 0px;
+            top: 0px;
+        }
+        75% {
+            opacity: 0.5;
+            left: 60%;
+            top: 0px;
+        }
+        100% {
+            opacity: 0.3;
+            left: 100%;
+            top: 0px;
+            //display: none;
+        }
+    }
+    
+    @media only screen and (max-width: 600px) {
+        ion-card,
+        ion-card-header {
+            margin: 1px;
+            padding: 1px;
+        }
+        //.imagePost {}
+        .avatarCard {
+            width: 40px;
+            height: 40px;
+        }
+    }
+    /* Small devices (portrait tablets and large phones, 600px and up) */
+    
+    @media only screen and (min-width: 600px) {
+        ion-card,
+        ion-card-header {
+            margin: 0;
+            padding: 0;
+        }
+    }
+    /* Medium devices (landscape tablets, 768px and up) */
+    
+    @media only screen and (min-width: 768px) {
+        // phone orientation
+    }
+    /* Large devices (laptops/desktops, 992px and up) */
+    
+    @media only screen and (min-width: 992px) {}
+    /* Extra large devices (large laptops and desktops, 1200px and up) */
+    
+    @media only screen and (min-width: 1200px) {}

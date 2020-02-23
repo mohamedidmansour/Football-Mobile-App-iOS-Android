@@ -1,0 +1,231 @@
+<ion-header>
+    <ion-toolbar>
+        <ion-title *ngIf="dataCurrentClient.type=='client'">{{dataCurrentClient.nom + ' ' + dataCurrentClient.prenom}}</ion-title>
+        <ion-title *ngIf="dataCurrentClient.type=='club'">{{dataCurrentClient.brand_name}}</ion-title>
+        <ion-icon slot="end" style="font-size: 30px;" src="../../assets/img/campaign.svg" [routerLink]="['/tabs/add-annonce']"></ion-icon>
+        <ion-icon slot="start" style="font-size: 25px;" src="../../assets/img/logout.svg" (click)="seDeconnecte()"></ion-icon>
+    </ion-toolbar>
+</ion-header>
+<ion-content>
+    <ion-grid fixed class="ion-no-padding">
+        <ion-row>
+            <ion-col size="4">
+                <ng-container *ngIf="!imageIsRead">
+                    <ion-avatar>
+                        <ion-skeleton-text width="100%" animated></ion-skeleton-text>
+                    </ion-avatar>
+                </ng-container>
+                <ng-container *ngIf="imageIsRead">
+                    <ion-avatar (click)="openPreview(urlImage+dataCurrentClient.url)">
+                        <ion-img [src]="urlImage+dataCurrentClient.url"></ion-img>
+                    </ion-avatar>
+                </ng-container>
+            </ion-col>
+            <ion-col class="ion-margin" size="8" class="ion-text-center">
+                <ion-label class="fontUserName"><strong>{{'Email : '+dataCurrentClient.email}}</strong></ion-label>
+                <ion-button [routerLink]="['/tabs/edite-profile-user']" style="width: 100%;" color="light" size="small">
+                    Modifier le profile &nbsp;
+                    <ion-icon src="../../assets/img/edit.svg"></ion-icon>
+                </ion-button>
+            </ion-col>
+        </ion-row>
+        <ion-row class="ion-no-margin" class="barMenu">
+            <ion-col class="cssItemClick" size="4" #btnActivite (click)="mesActiviteFunction(btnActivite)">PHOTOS</ion-col>
+            <ion-col class="cssItem" size="4" #btnPublication (click)="mesPublicationFunction(btnPublication)">PUBLICATIONS</ion-col>
+            <ion-col *ngIf="dataCurrentClient.type=='club'" #btnClub class="cssItem" size="4" (click)="mesClubesFunction(btnClub)">TERRAINS</ion-col>
+            <ion-col *ngIf="dataCurrentClient.type=='client'" #btnReservation class="cssItem" size="4" (click)="mesReservationsFunction(btnReservation)">RESERVATIONS</ion-col>
+        </ion-row>
+        <ion-row id="section1" style="border-bottom: 1px solid rgb(160, 154, 154);">
+            <ng-container *ngIf="!imageIsRead">
+                <ion-col size="12">
+                    <ion-grid fixed>
+                        <ion-row class="ion-no-padding" class="imgUser">
+                            <ion-col class="ion-no-padding" size="3" *ngFor="let imgd of [1,2,3,4,5,6,7,8,9]">
+                                <ion-skeleton-text width="100%" style="height: 100px;" animated></ion-skeleton-text>
+                            </ion-col>
+                        </ion-row>
+                    </ion-grid>
+                </ion-col>
+            </ng-container>
+            <ng-container *ngIf="imageIsRead">
+                <ion-col size="12">
+                    <ion-grid fixed>
+                        <ion-row class="ion-no-padding" class="imgUser">
+                            <ion-col class="ion-no-padding" size="3" *ngFor="let imgd of mesImages">
+                                <img style="width:100%;height: 100px;" tappable src="{{urlImage  + imgd.url}}" (click)="openPreview(urlImage+imgd.url)">
+                            </ion-col>
+                            <ion-col class="ion-no-padding" size="3">
+                                <ion-button size="small" color="light" style="width: 100%;height: 100px;" (click)="presentActionSheet2()">
+                                    Choisir <br> une <br> photo
+                                    <span style="font-size: 20px;"><ion-icon name="camera"></ion-icon></span> &nbsp;
+                                </ion-button>
+                            </ion-col>
+                        </ion-row>
+                        <ion-row class="imgUser">
+                            <ion-col size="12">
+                                <img src="../../assets/img/bgImage.jpg" width="100" height="250" alt="No Img Found">
+                            </ion-col>
+                        </ion-row>
+                    </ion-grid>
+                </ion-col>
+            </ng-container>
+        </ion-row>
+
+        <ion-row id="section2" style=" border-bottom: 1px solid rgb(160, 154, 154);">
+            <ion-col size="12" *ngIf="mesPublications.length==0">
+                <ion-img [src]="'../../assets/img/no_data_found.png'"></ion-img>
+            </ion-col>
+            <ion-col size="12" *ngIf="mesPublications">
+                <ion-card *ngFor="let item of mesPublications">
+                    <ion-grid class="ion-no-padding">
+                        <ion-row>
+                            <ion-col class="ion-no-padding" size="1" offset="11">
+                                <ion-icon color="danger" name="more" (click)="presentActionSheet(item.id)"></ion-icon>
+                            </ion-col>
+                        </ion-row>
+                    </ion-grid>
+                    <ion-card-content class="ion-no-margin ion-no-padding">
+                        <img class="imagePost" src="{{urlImage + item.image}}" />
+                        <ion-grid fixed>
+                            <ion-row>
+                                <ion-col size="12" style="text-align: justify;">
+                                    <h4 class="NomTerrain">{{item.titre | uppercase}}</h4>
+                                    <p class="AdresseTerrain">{{item.pub | slice:0:250}}</p>
+                                </ion-col>
+                            </ion-row>
+                            <ion-row style="margin: 0 auto;">
+                                <ion-col size="12" class="fontSizeIconsm-down">
+                                    <ion-icon name="timer"></ion-icon> : {{item.date_creation}}
+                                </ion-col>
+                            </ion-row>
+                            <ion-row style="font-size: 16px;font-weight: bold;">
+                                <ion-col size="12">
+                                    <ion-button size="small" style="width: 100%;" color="tertiary" (click)="seePersonneInteresed(item.id)">
+                                        <ion-icon src="../../assets/img/football-player-setting-ball.svg"></ion-icon>
+                                        &nbsp;&nbsp;les personnes intérresés
+                                    </ion-button>
+                                </ion-col>
+                            </ion-row>
+                        </ion-grid>
+                    </ion-card-content>
+                </ion-card>
+            </ion-col>
+        </ion-row>
+        <ion-row id="section3" style="display:none;border-bottom: 1px solid rgb(160, 154, 154);">
+            <ng-container *ngIf="dataCurrentClient.type =='club'">
+                <ion-col class="ion-no-padding imgUser" size="12">
+                    <ion-button size="small" color="light" style="width: 100%;height: 50px;" (click)="openPreviewAddTerrain()">
+                        <span class="btnAddTerrain">Ajouter Terrain&nbsp;<ion-icon style="font-size: 25px;" src="../../assets/img/soccer-field.svg"></ion-icon></span>
+                    </ion-button>
+                </ion-col>
+                <ion-col size="12" *ngIf="mesTerrains">
+                    <!--LISTS DES TERRAINS-->
+                    <ion-card *ngFor="let terrain of mesTerrains">
+                        <ion-grid class="ion-no-padding">
+                            <ion-row>
+                                <ion-col class="ion-no-padding" size="1" offset="11">
+                                    <ion-icon color="danger" name="more"></ion-icon>
+                                </ion-col>
+                            </ion-row>
+                        </ion-grid>
+                        <ion-card-content class="ion-no-margin ion-no-padding">
+                            <img class="imagePost" src="{{urlImage + terrain.url}}" (click)="openPreview(urlImage+terrain.url)" />
+                            <ion-grid fixed>
+                                <ion-row>
+                                    <ion-col size="12" style="text-align: justify;">
+                                        <h4 class="Nom-Terrain">{{terrain.nom}}</h4>
+                                    </ion-col>
+                                </ion-row>
+                                <!-- <ion-row style="margin: 0 auto;">
+                                    <ion-col size="12" class="bodrer-col-terrain">
+                                        <ion-grid fixed>
+                                            <ion-row>
+                                                <ion-col size="6">Largeur</ion-col>
+                                                <ion-col size="6"><b>{{terrain.largeur}} &nbsp; m<sup>2</sup></b></ion-col>
+                                            </ion-row>
+                                            <ion-row>
+                                                <ion-col size="6">Longeur</ion-col>
+                                                <ion-col size="6"><b>{{terrain.longeur}} &nbsp; m<sup>2</sup></b></ion-col>
+                                            </ion-row>
+                                        </ion-grid>
+                                    </ion-col>
+                                </ion-row> -->
+                                <ion-row style="font-size: 16px;font-weight: bold;">
+                                    <ion-col size="12">
+                                        <ion-button size="small" style="width: 100%;" color="tertiary" (click)="seeReservationTerrain(terrain.id)">
+                                            <ion-icon src="../../assets/img/football-player-setting-ball.svg"></ion-icon>
+                                            &nbsp;&nbsp;Les Réservations
+                                        </ion-button>
+                                    </ion-col>
+                                </ion-row>
+                            </ion-grid>
+                        </ion-card-content>
+                    </ion-card>
+                    <!--FIN LISTE -->
+                </ion-col>
+                <ion-col size="12" *ngIf="!mesTerrains">
+                    <ion-img [src]="'../../assets/img/no_data_found.png'"></ion-img>
+                </ion-col>
+            </ng-container>
+            <ng-container *ngIf="dataCurrentClient.type=='client'">
+                <ion-col size="12" *ngIf="mesReservations.length">
+                    <ion-card *ngFor="let element of mesReservations" [class.disabled]="dateBetweenTwoDate(element.date_reservation,element.heure_reservation) == -1">
+                        <ion-item>
+                            <ion-grid fixed class="ion-no-padding ion-no-margin">
+                                <ion-row class="ion-no-padding ion-no-margin">
+                                    <ion-col size="11" class="ion-no-padding ion-no-margin">
+                                        <ion-label style="font-family: monospace;">{{element.nom | uppercase}}</ion-label>
+                                    </ion-col>
+                                    <ion-col size="1">
+                                        <ion-icon color="danger" name="more" [class.disabledDelete]="dateBetweenTwoDate(element.date_reservation,element.heure_reservation) == 1" (click)="presentActionSheet3(element.id)"></ion-icon>
+                                    </ion-col>
+                                </ion-row>
+                            </ion-grid>
+                        </ion-item>
+                        <ion-card-content>
+                            <ion-grid fixed class="ion-no-padding ion-no-margin">
+                                <ion-row class="ion-no-padding ion-no-margin">
+                                    <ion-col size="1" class="ion-no-padding ion-no-margin">
+                                        <ion-icon name="calendar"></ion-icon>
+                                    </ion-col>
+                                    <ion-col size="11" class="ion-no-padding ion-no-margin">
+                                        <ion-label style="font-family: monospace;">{{element.date_reservation | uppercase}}</ion-label>
+                                        <ion-label style="font-family: monospace;" color="success" *ngIf="dateBetweenTwoDate(element.date_reservation,element.heure_reservation) ==  1">&nbsp;- <b><strong>Aujourd'hui</strong></b> </ion-label>
+                                        <ion-label style="font-family: monospace;" *ngIf="dateBetweenTwoDate(element.date_reservation,element.heure_reservation) == -1">&nbsp;- <strong> Temps écoulé !! </strong> </ion-label>
+                                    </ion-col>
+                                </ion-row>
+                                <ion-row class="ion-no-padding ion-no-margin">
+                                    <ion-col size="1" class="ion-no-padding ion-no-margin">
+                                        <ion-icon name="timer"></ion-icon>
+                                    </ion-col>
+                                    <ion-col size="11" class="ion-no-padding ion-no-margin">
+                                        <ion-label style="font-family: monospace;">{{element.heure_reservation | uppercase}}</ion-label>
+                                    </ion-col>
+                                </ion-row>
+                                <ion-row class="ion-no-padding ion-no-margin">
+                                    <ion-col size="1" class="ion-no-padding ion-no-margin">
+                                        <ion-icon name="call"></ion-icon>
+                                    </ion-col>
+                                    <ion-col size="11" class="ion-no-padding ion-no-margin">
+                                        <ion-label style="font-family: monospace;">{{element.tel | uppercase}}</ion-label>
+                                    </ion-col>
+                                </ion-row>
+                                <ion-row class="ion-no-padding ion-no-margin">
+                                    <ion-col size="1" class="ion-no-padding ion-no-margin">
+                                        <ion-icon name="pin"></ion-icon>
+                                    </ion-col>
+                                    <ion-col size="11" class="ion-no-padding ion-no-margin">
+                                        <ion-label style="font-family: monospace;">{{element.adresse | uppercase}}</ion-label>
+                                    </ion-col>
+                                </ion-row>
+                            </ion-grid>
+                        </ion-card-content>
+                    </ion-card>
+                </ion-col>
+                <ion-col size="12" *ngIf="!mesReservations.length">
+                    <ion-img [src]="'../../assets/img/no_data_found.png'"></ion-img>
+                </ion-col>
+            </ng-container>
+        </ion-row>
+    </ion-grid>
+</ion-content>
