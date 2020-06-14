@@ -7,6 +7,12 @@ Conception UML, HTML5/CSS3,TypeScript.
 Framework : Angular8, Ionic4 et Laravel 5.8.
 L'utilisation de Rest API MySQL.
 Test Et Vérification . 
+#IONIC
+#Laravel
+#Angular8
+#API
+#MySQL
+#
 
 ![alt tag](https://github.com/mohamedidmansour/upload-img/blob/master/a.png?raw=true)
 ###### CREATED BY : 
