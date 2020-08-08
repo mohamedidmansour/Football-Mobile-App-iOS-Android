@@ -1,20 +1,13 @@
-# PROJECT-PFA-2019 
+# FOOTBALL APP  
 
-Etude de Projet préalable et Etude de Faisabilité.
-Conception & Modélisation de système d'information.
-Réalisation d'une Application web et mobile qui concerne la gestion des processus propres à la gestion de Terrain de Foot.
-Conception UML, HTML5/CSS3,TypeScript.
-Framework : Angular8, Ionic4 et Laravel 5.8.
-L'utilisation de Rest API MySQL.
-Test Et Vérification . 
-#IONIC
-#Laravel
-#Angular8
-#API
-#MySQL
+Conception et réalisation d'une application mobile destinée aux joueurs et aux clubs de football, qui permette les joueurs de : réserver des terrains de football / publiés des annonces pour chercher les joueurs intéressés pour jouer un match avec ils / intégrer une équipe pour un match. Quant aux clubs, ils peuvent de gérer ses terrains de football.
+
+![alt tag](https://img.icons8.com/ios/30/000000/programming.png) Langages et frameworks utilisé:\ 
+#### PHP (Laravel), Ionic4, Angular8, MySQL.
+
 #
 
 ![alt tag](https://github.com/mohamedidmansour/upload-img/blob/master/a.png?raw=true)
-###### CREATED BY : 
-[@IDMANSOUR MOHAMED](https://www.linkedin.com/in/mohamedidmansour/)
-###### EMAIL ADDRESSE : [idmansourmohamed@outlook.com]()
+###### CREATED BY:[@IDMANSOUR MOHAMED](https://www.linkedin.com/in/mohamedidmansour/)
+###### EMAIL ADDRESSE: [idmansourmohamed@outlook.com]()
+###### EMAIL ADDRESSE: [mi.idmansour@gmail.com]()
