@@ -27,7 +27,7 @@ export class ServiceDataService {
   
   
   //http://192.168.1.128:8080/
-  ip= '192.168.43.79'
+  ip= '192.168.1.13'
   port='8000'
   urlDataImage = 'http://'+this.ip+':8000/storage/images/';
   urlRoute = 'http://'+this.ip+':8000/api/';
