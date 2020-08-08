@@ -11,6 +11,8 @@ declare var google;
   templateUrl: './login.page.html',
   styleUrls: ['./login.page.scss'],
 })
+// BY Mohamed IDMANSOUR 
+// BY Mohamed IDMANSOUR 
 export class LoginPage implements OnInit {
   // attributs
   data:Client = {

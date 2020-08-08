@@ -22,11 +22,13 @@ import { Observable } from 'rxjs';
 @Injectable({
   providedIn: 'root'
 })
-
+// BY Mohamed IDMANSOUR 
+// BY Mohamed IDMANSOUR 
 export class ServiceDataService {
   
   
   //http://192.168.1.128:8080/
+  // BY Mohamed IDMANSOUR 
   ip= '192.168.1.13'
   port='8000'
   urlDataImage = 'http://'+this.ip+':8000/storage/images/';
@@ -433,4 +435,7 @@ export class ServiceDataService {
         console.log("resérvation bien supprimé !!");
       })
     }
+	// BY Mohamed IDMANSOUR 
+	// BY Mohamed IDMANSOUR 
+	
 }
