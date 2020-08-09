@@ -1,0 +1,9 @@
+.styleCx{
+    color: darken($color: #000000, $amount: 0);
+    background-attachment: fixed;
+    font-size: medium;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    .child{
+        border-radius: 15px;
+    }
+}
