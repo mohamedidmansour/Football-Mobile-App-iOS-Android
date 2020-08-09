@@ -28,6 +28,7 @@ export class ServiceDataService {
   
   
   //http://192.168.1.128:8080/
+  //http://192.168.1.128:8080/ 
   // BY Mohamed IDMANSOUR 
   ip= '192.168.1.13'
   port='8000'
