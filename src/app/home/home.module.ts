@@ -21,3 +21,4 @@ import { HomePage } from './home.page';
   declarations: [HomePage]
 })
 export class HomePageModule {}
+// By IDMANSOUR MOHAMED

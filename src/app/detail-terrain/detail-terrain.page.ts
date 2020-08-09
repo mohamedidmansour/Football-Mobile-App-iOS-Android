@@ -119,7 +119,7 @@ export class DetailTerrainPage implements OnInit {
          this.terrain = res[0];
       })
   }
-   //zoom image clicked
+  // zoom image clicked
   openPreview(img) {
     this.modalController.create({
       component: ImageModalPage,

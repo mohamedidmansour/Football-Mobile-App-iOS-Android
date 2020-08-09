@@ -1,3 +1,4 @@
+// By IDMANSOUR MOHAMED
 import { ActionSheetController } from '@ionic/angular';
 import { Client } from './../model/Client';
 import { ServiceDataService } from 'src/app/services/service-data.service';
@@ -148,3 +149,4 @@ cropImage() {
   }
 
 }
+// By IDMANSOUR MOHAMED
